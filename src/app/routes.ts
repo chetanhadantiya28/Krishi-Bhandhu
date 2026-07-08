@@ -12,6 +12,14 @@ import { DiagnosisResult } from "./components/DiagnosisResult";
 import { KisanDost } from "./components/KisanDost";
 import { GovernmentAlerts } from "./components/GovernmentAlerts";
 import { Profile } from "./components/Profile";
+import { RSKLayout } from "./components/rsk/RSKLayout";
+import { RSKDashboard } from "./components/rsk/RSKDashboard";
+import { EscalatedCases } from "./components/rsk/EscalatedCases";
+import { CaseDetails } from "./components/rsk/CaseDetails";
+import { Analytics } from "./components/rsk/Analytics";
+import { FarmerDirectory } from "./components/rsk/FarmerDirectory";
+import { RSKAlerts } from "./components/rsk/RSKAlerts";
+import { RSKProfile } from "./components/rsk/RSKProfile";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +43,20 @@ export const router = createBrowserRouter([
       },
       { path: "processing", Component: AIProcessing },
       { path: "result", Component: DiagnosisResult },
+      {
+        path: "rsk/app",
+        Component: RSKLayout,
+        children: [
+          { index: true, Component: RSKDashboard },
+          { path: "cases", Component: EscalatedCases },
+          { path: "case/:id", Component: CaseDetails },
+          { path: "analytics", Component: Analytics },
+          { path: "farmers", Component: FarmerDirectory },
+          { path: "alerts", Component: RSKAlerts },
+          { path: "disease", Component: Analytics },
+          { path: "profile", Component: RSKProfile },
+        ],
+      },
     ],
   },
 ]);
